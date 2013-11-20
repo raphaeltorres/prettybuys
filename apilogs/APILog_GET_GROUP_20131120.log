@@ -1,0 +1,48 @@
+2013-11-20T05:31:14Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"groupinfo\":[{\"group_id\":\"1\",\"group_name\":\"Administrator\",\"group_description\":\"Adminstrator Account\"}]},\"log_query\":\"SELECT *\\nFROM (`groups`)\\nWHERE `group_id` =  '1'\"}"}
+
+2013-11-20T05:31:19Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/0","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"grouplist\":[{\"group_id\":\"1\",\"group_name\":\"Administrator\",\"group_description\":\"Adminstrator Account\"}]},\"log_query\":\"SELECT *\\nFROM (`groups`)\\nORDER BY `group_id` asc\"}"}
+
+2013-11-20T05:31:20Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"grouplist\":[{\"group_id\":\"1\",\"group_name\":\"Administrator\",\"group_description\":\"Adminstrator Account\"}]},\"log_query\":\"SELECT *\\nFROM (`groups`)\\nORDER BY `group_id` asc\"}"}
+
+2013-11-20T05:31:23Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/5","log_request":"false","log_response":"{\"rc\":999,\"success\":false,\"message\":[\"No Records Found.\"],\"log_query\":\"SELECT *\\nFROM (`groups`)\\nWHERE `group_id` =  '5'\"}"}
+
+2013-11-20T05:38:00Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"groupinfo\":[{\"group_id\":\"1\",\"group_name\":\"Administrator\",\"group_description\":\"Adminstrator Account\"}]},\"log_query\":\"SELECT *\\nFROM (`groups`)\\nWHERE `group_id` =  '1'\"}"}
+
+2013-11-20T05:38:00Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"groupinfo\":[{\"group_id\":\"1\",\"group_name\":\"Administrator\",\"group_description\":\"Adminstrator Account\"}]},\"log_query\":\"SELECT *\\nFROM (`groups`)\\nWHERE `group_id` =  '1'\"}"}
+
+2013-11-20T05:38:00Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/2","log_request":"false","log_response":"{\"rc\":999,\"success\":false,\"message\":[\"No Records Found.\"],\"log_query\":\"SELECT *\\nFROM (`groups`)\\nWHERE `group_id` =  '2'\"}"}
+
+2013-11-20T05:38:00Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/5","log_request":"false","log_response":"{\"rc\":999,\"success\":false,\"message\":[\"No Records Found.\"],\"log_query\":\"SELECT *\\nFROM (`groups`)\\nWHERE `group_id` =  '5'\"}"}
+
+2013-11-20T05:38:27Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"groupinfo\":[{\"group_id\":\"1\",\"group_name\":\"Administrator\",\"group_description\":\"Adminstrator Account\"}]},\"log_query\":\"SELECT *\\nFROM (`groups`)\\nWHERE `group_id` =  '1'\"}"}
+
+2013-11-20T05:39:24Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"groupinfo\":[{\"group_id\":\"1\",\"group_name\":\"Administrator\",\"group_description\":\"Adminstrator Account\"}]},\"log_query\":\"SELECT *\\nFROM (`groups`)\\nWHERE `group_id` =  '1'\"}"}
+
+2013-11-20T05:40:15Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/2","log_request":"false","log_response":"{\"rc\":999,\"success\":false,\"message\":[\"No Records Found.\"],\"log_query\":\"SELECT *\\nFROM (`groups`)\\nWHERE `group_id` =  '2'\"}"}
+
+2013-11-20T05:40:17Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"groupinfo\":[{\"group_id\":\"1\",\"group_name\":\"Administrator\",\"group_description\":\"Adminstrator Account\"}]},\"log_query\":\"SELECT *\\nFROM (`groups`)\\nWHERE `group_id` =  '1'\"}"}
+
+2013-11-20T05:43:35Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"groupinfo\":[{\"group_id\":\"1\",\"group_name\":\"Administrator\",\"group_description\":\"Adminstrator Account\"}]},\"log_query\":\"SELECT *\\nFROM (`groups`)\\nWHERE `group_id` =  '1'\"}"}
+
+2013-11-20T05:43:39Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/0","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"grouplist\":[{\"group_id\":\"1\",\"group_name\":\"Administrator\",\"group_description\":\"Adminstrator Account\"}]},\"log_query\":\"SELECT *\\nFROM (`groups`)\\nORDER BY `group_id` asc\"}"}
+
+2013-11-20T05:43:49Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/1","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"groupinfo\":[{\"group_id\":\"1\",\"group_name\":\"Administrator\",\"group_description\":\"Adminstrator Account\"}]},\"log_query\":\"SELECT *\\nFROM (`groups`)\\nWHERE `group_id` =  '1'\"}"}
+
+2013-11-20T05:43:52Z
+{"log_client_id":"98740","log_method":"GROUPLIST - GET","log_url":"api\/groups\/98740\/0","log_request":"false","log_response":"{\"rc\":0,\"success\":true,\"data\":{\"grouplist\":[{\"group_id\":\"1\",\"group_name\":\"Administrator\",\"group_description\":\"Adminstrator Account\"}]},\"log_query\":\"SELECT *\\nFROM (`groups`)\\nORDER BY `group_id` asc\"}"}
+
