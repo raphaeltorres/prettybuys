@@ -100,7 +100,7 @@ class Users_model extends CI_Model {
 			if ( $this->db->affected_rows() > 0 ){
 				$response['rc']			= 0;
 				$response['message'][]	= 'User has been successfully added.';
-				$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
+				$response['log_query']	= str_replace('\n',' ',$this->db->last_query());
 			}
 			else{
 				$response['rc']			= 999;
