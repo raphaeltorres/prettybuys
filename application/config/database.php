@@ -64,5 +64,21 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+$db['prettybuys']['hostname'] = 'localhost';
+$db['prettybuys']['username'] = 'root';
+$db['prettybuys']['password'] = '';
+$db['prettybuys']['database'] = 'prettybuys';
+$db['prettybuys']['dbdriver'] = 'mysqli';
+$db['prettybuys']['dbprefix'] = '';
+$db['prettybuys']['pconnect'] = FALSE;
+$db['prettybuys']['db_debug'] = TRUE;
+$db['prettybuys']['cache_on'] = FALSE;
+$db['prettybuys']['cachedir'] = '';
+$db['prettybuys']['char_set'] = 'utf8';
+$db['prettybuys']['dbcollat'] = 'utf8_general_ci';
+$db['prettybuys']['swap_pre'] = '';
+$db['prettybuys']['autoinit'] = TRUE;
+$db['prettybuys']['stricton'] = FALSE;
+
 /* End of file database.php */
 /* Location: ./application/config/database.php */

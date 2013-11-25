@@ -10,15 +10,19 @@ class Home extends CI_Controller
 
 	public function index()
 	{
-		$data['mainContent'] = 'home.tpl';
+		$data['mainContent'] = 'login.tpl';
 		
-		$data['data'] = array(
+		$data = array(
 			'baseUrl'	=> base_url(),
 			'title'		=> 'Home'
 		);
 		
-		$this->load->view($this->globalTpl, $data);	
+		$this->parser->parse('login_form.tpl', $data);
+		
+		#$this->load->view($this->globalTpl, $data);	
 	}
+	
+	
 }
 
 /* End of file welcome.php */
