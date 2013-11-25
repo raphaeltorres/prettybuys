@@ -24,7 +24,7 @@ class User extends CI_Controller
 		
 		$userId = $this->session->userdata('userid');
 		
-		$data['mainContent'] = 'dashboard.tpl';
+		$data['mainContent'] = 'useradd.tpl';
 		
 		$access	= $this->user_model->useraccess($userId);
 			
