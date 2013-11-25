@@ -3,7 +3,7 @@
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>Admin Panel Login</title>
+	<title>PrettyBuys Login</title>
 	<!-- end: Meta -->
 	
 	<!-- start: Mobile Specific -->

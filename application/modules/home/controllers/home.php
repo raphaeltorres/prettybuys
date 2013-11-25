@@ -63,6 +63,7 @@ class Home extends CI_Controller
 					'email'	 		=> $login->data->user->user_email_address,
 					'fname'	 		=> $login->data->user->user_first_name,
 					'lname'			=> $login->data->user->user_last_name,
+					'groupId'		=> $login->data->user->user_group_id,
 					'is_logged_in'  => true
 				);
 
@@ -92,7 +93,7 @@ class Home extends CI_Controller
 	function dashboard()
 	{
 	
-		#$this->hero_session->is_active_session();
+		$this->hero_session->is_active_session();
 		$data['mainContent'] = 'dashboard.tpl';
 		
 		$data['data'] = array(
@@ -115,7 +116,7 @@ class Home extends CI_Controller
 		#$this->session->unset_userdata('username');
 		#$this->session->unset_userdata('is_logged_in');
 		$this->session->sess_destroy();
-		redirect('home');
+		redirect(base_url());
 	}	
 	
 	

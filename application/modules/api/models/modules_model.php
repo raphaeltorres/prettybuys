@@ -9,7 +9,7 @@ class Modules_model extends CI_Model {
 	}
 
 	public function getAllModules() {
-		$this->db->from('tbl_module');
+		$this->db->from('module');
 		$this->db->order_by('module_id', 'asc');
 		$query = $this->db->get();
 		 
@@ -30,25 +30,23 @@ class Modules_model extends CI_Model {
 		return $response;
 	}
 	
-	public function getUserModule($userId) {
+	public function getModuleinfo($moduleId) {
 		$this->db->select('module_id,module_name,module_description,module_function')
-			->from('tbl_group')
-			->join('tbl_group_member','tbl_group.group_id = tbl_group_member.gm_group_id','left')
-			->join('tbl_account','tbl_account.user_id = tbl_group_member.gm_user_id','inner')
-			->join('tbl_group_access','tbl_group_access.ga_group_id = tbl_group.group_id','inner')
-			->join('tbl_module','tbl_module.module_id = tbl_group_access.ga_module_id','inner')
-			->where('gm_user_id', $userId)
+			->from('module')
+			->where('module_id', $moduleId)
 			->order_by('module_id','asc');
 		 
+		$query = $this->db->get();	
+			
 		//if data exist, return results
 		if ($query->num_rows() > 0){
 			$response['rc']					 = 0;
 			$response['success']			 = true;
-			$response['data']['usermodule'] = $query->result();
+			$response['data']['moduleinfo'] = $query->row();
 			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{ //no record found	 
-			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Company Info: No Records Found.';
+			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Module Info: No Records Found.';
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= $err_message;

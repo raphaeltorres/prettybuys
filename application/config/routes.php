@@ -50,6 +50,9 @@ $route['api/users/([0-9]+)'] 							= "api/users/rest/$1";
 $route['api/groups/([0-9]+)/([0-9]+)'] 					= "api/groups/rest/$1/$2"; 	//auth key, id
 $route['api/groups/([0-9]+)'] 							= "api/groups/rest/$1";
 
+$route['api/moduls/([0-9]+)/([0-9]+)'] 					= "api/moduls/rest/$1/$2"; 	//auth key, id
+$route['api/moduls/([0-9]+)'] 								= "api/moduls/rest/$1";
+
 $route['api/country/([a-z]+)/([0-9]+)']					= "api/country/rest/$1/$2";
 $route['api/country/([a-z]+)/([0-9]+)/([0-9]+)']		= "api/country/rest/$1/$2/$3";	//auth key, id
 $route['api/country/([a-z]+)/']							= "api/country/rest/$1";
