@@ -3,8 +3,7 @@
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>Metro Admin Template - Metro UI Style Bootstrap Admin Template</title>
-	<meta name="keyword" content="Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+	<title>Pretty Buys AadminPanel</title>
 	<!-- end: Meta -->
 	
 	<!-- start: Mobile Specific -->
@@ -31,11 +30,11 @@
 	<![endif]-->
 		
 	<!-- start: Favicon -->
-	<link rel="shortcut icon" href="img/favicon.ico">
+	<link rel="shortcut icon" href="{$baseUrl}assets/img/favicon.ico">
 	<!-- end: Favicon -->
 	
 			<style type="text/css">
-			body { background: url({$baseUrl}assets/img/bg-login.jpg) !important; }
+			body { background: url({$baseUrl}assets/img/bgtile.jpg) !important; }
 		</style>
 		
 		
@@ -52,19 +51,20 @@
 						<a href="home.html"><i class="icon-home"></i></a>
 						<a href="#"><i class="icon-cog"></i></a>
 					</div>
-					<h2>Login to your account</h2>
-					<form class="form-horizontal" action="index.html" method="post">
+					<!--  <div class="login-logo" align="center" style="max-width:80%; padding: 0px 80px;"><img src="http://localhost/adminPanel/assets/img/comphero-logo_03.png"></div>-->
+					
+					<p>Login to your account</p>
+						{$form_open}
 						<fieldset>
-							
 							<div class="input-prepend" title="Username">
 								<span class="add-on"><i class="icon-user"></i></span>
-								<input class="input-large span10" name="username" id="username" type="text" placeholder="type username">
+								{$username}
 							</div>
 							<div class="clearfix"></div>
 
 							<div class="input-prepend" title="Password">
 								<span class="add-on"><i class="icon-lock"></i></span>
-								<input class="input-large span10" name="password" id="password" type="password" placeholder="type password">
+								{$password}
 							</div>
 							<div class="clearfix"></div>
 							
@@ -74,11 +74,11 @@
 							<div class="clearfix"></div>
 					
 					<hr>
-					<h3>Forgot Password?</h3>
+					<p>Forgot Password?</p>
 					<p>
 						No problem, <a href="#">click here</a> to get a new password.
 					</p>	
-				</fieldset></form></div><!--/span-->
+				</fieldset>{$form_close}</div><!--/span-->
 			</div><!--/row-->
 			
 

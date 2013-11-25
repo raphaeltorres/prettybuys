@@ -278,8 +278,7 @@ class Users extends CI_Controller {
 	 ** for user login. includes user access logs
 	 **/
 	public function login(){
-		$locale 		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
-		$auth_key 		= ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
+		$auth_key 		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
 		
 		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
 		
@@ -292,11 +291,13 @@ class Users extends CI_Controller {
 			if( $username == '' || $username == NULL ){
 				$response['rc']			= 999;
 				$response['success']	= false;
+				$response['log_query']	= '';	
 				$response['message'][]	= 'Username must be provided';									
 			}
 			if( ($password == '') || $password == NULL ){
 				$response['rc']			= 999;
 				$response['success']	= false;
+				$response['log_query']	= '';	
 				$response['message'][]	= 'Password must be provided';									
 			}
 			
@@ -310,15 +311,15 @@ class Users extends CI_Controller {
 				if ( $response['rc'] == 0 ){
 					$user_info = $response['data']['user'];
 					
-					$data_arr = array(
+					/*$data_arr = array(
 						'userid' 	=> $user_info->userid,
 						'access_ip' => $_SERVER['REMOTE_ADDR']
-					);
+					);*/
 					
 					// for access logs
-					$response['data']['user']->log_id = $this->common_model->access_logs($data_arr,'login');
-					$response['data']['user']->locale = $locale;
-					$this->session->sess_destroy();
+					#$response['data']['user']->log_id = $this->common_model->access_logs($data_arr,'login');
+					#$response['data']['user']->locale = $locale;
+					#$this->session->sess_destroy();
 				}					
 			}
 		}
@@ -335,9 +336,9 @@ class Users extends CI_Controller {
 			'log_method' 	=> 'LOGIN - '.$_SERVER['REQUEST_METHOD'],
 			'log_url' 		=> $this->uri->uri_string(),
 			'log_request' 	=> json_encode($this->input->post()),
-			'log_response' 	=> json_encode($response),
-			'log_query' 	=> $response['log_query'],
+			'log_response' 	=> json_encode($response)
 		);
+		
 		$this->apilog_model->apiLog($log_data); //db logs
 		$this->api_functions->apiLog(json_encode($log_data),'validate_auth_key'); //text logs
 		

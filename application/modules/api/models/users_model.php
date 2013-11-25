@@ -111,9 +111,9 @@ class Users_model extends CI_Model {
 		return $response;
 	}
 	
-	public function validateUser($email,$password) {
+	public function validateUser($username,$password) {
 		$arr_data = array(
-			'user_email_address' 	=> $email,
+			'user_login_name' 		=> $username,
 			'user_login_password' 	=> $password
 		);
 		
@@ -123,9 +123,9 @@ class Users_model extends CI_Model {
 		//user data exist
 		if ($query->num_rows() > 0){
 			//Arrange data for Jason
-			$response['rc']				= 0;
-			$response['success'] 		= true;
-			$response['data']['user'] 	= $query->row();
+			$response['rc']					= 0;
+			$response['success'] 			= true;
+			$response['data']['user'] 		= $query->row();
 			$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
 		//userdata don't exist	   			 
 		}

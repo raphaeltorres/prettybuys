@@ -6,9 +6,6 @@ class Modules_model extends CI_Model {
 		$utctimestamp = $this->db->query("SELECT UTC_TIMESTAMP() as utctimestamp");
 		$this->utctimestamp = $utctimestamp->row()->utctimestamp;
 		$dbPrefix	= $this->config->item('db_prefix');
-		
-		//load database based on locale
-		$this->db	= $this->load->database($dbPrefix,TRUE);
 	}
 
 	public function getAllModules() {

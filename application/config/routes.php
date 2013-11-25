@@ -39,7 +39,8 @@
 */
 
 $route['default_controller'] 				= "home";
-$route['dashboard/members_area'] 			= "admin/dashboard";
+$route['dashboard/members_area'] 			= "home/dashboard";
+$route['dashboard/logout'] 					= "home/logout";
 
 /*Custom Routing*/
 $route['contact'] 										= "pages/contact";
