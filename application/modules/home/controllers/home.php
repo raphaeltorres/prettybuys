@@ -40,7 +40,9 @@ class Home extends CI_Controller
 					'form_open' 	=> $form_open,
 					'form_close' 	=> $form_close,
 					'username'		=> $username,
-					'password'		=> $password
+					'password'		=> $password,
+					'msgClass'		=> $this->msgClass,
+					'msgInfo'		=> $this->msgInfo
 			);
 
 			$this->parser->parse('login_form.tpl', $data);
@@ -66,6 +68,20 @@ class Home extends CI_Controller
 
 				$this->session->set_userdata($data);
 				redirect('dashboard/members_area');
+			}
+				
+			else{
+				$msgClass = 'alert alert-error';
+				$msgInfo  = ( $login->message[0] ) ? $login->message[0] : 'Invalid Username and/or Password.';
+					
+				//set flash data for error/info message
+				$msginfo_arr = array(
+				'msgClass' => $msgClass,
+				'msgInfo'  => $msgInfo,
+				);
+				$this->session->set_flashdata($msginfo_arr);
+
+				redirect('home');
 			}
 		}
 		

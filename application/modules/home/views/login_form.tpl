@@ -3,7 +3,7 @@
 	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
-	<title>Pretty Buys AadminPanel</title>
+	<title>Admin Panel Login</title>
 	<!-- end: Meta -->
 	
 	<!-- start: Mobile Specific -->
@@ -52,6 +52,14 @@
 						<a href="#"><i class="icon-cog"></i></a>
 					</div>
 					<!--  <div class="login-logo" align="center" style="max-width:80%; padding: 0px 80px;"><img src="http://localhost/adminPanel/assets/img/comphero-logo_03.png"></div>-->
+					
+					<!-- for error/success info message -->
+			        {if $msgInfo}
+			        	<div class="{$msgClass}">
+			            	<button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+			                <strong>{$msgInfo}</strong>
+			            </div>
+			        {/if}
 					
 					<p>Login to your account</p>
 						{$form_open}
