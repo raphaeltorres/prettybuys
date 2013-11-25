@@ -279,7 +279,6 @@ class Users extends CI_Controller {
 	 **/
 	public function login(){
 		$auth_key 		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
-		
 		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
 		
 		//auth key is valid
@@ -433,6 +432,40 @@ class Users extends CI_Controller {
 		$this->parser->parse('index.tpl');
 	}
 	// end of get users
+	
+	function useraccess()
+	{
+		$auth_key 		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+		$is_valid_auth 	= $this->common_model->validate_auth_key($auth_key);
+		
+		//auth key is valid
+		if ( $is_valid_auth['rc'] == 0 ){
+			$user_id = ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
+			$this->load->model('modules_model');
+			
+			if ( $user_id != '' ){
+				//get user info
+				$response = $this->modules_model->getModulesAccess($user_id);
+			}
+			else{
+				//get user list
+				$response = $this->modules_model->getModulesAccess();
+			}
+		}
+		else{
+			$response['rc']			= $is_valid_auth['rc'];
+			$response['success']	= $is_valid_auth['success'];
+			$response['message'][]	= $is_valid_auth['message'];
+		}
+		
+		//display Jason
+		$this->output
+			 ->set_content_type('application/json')
+			 ->set_output(json_encode($response));
+		
+		$this->load->library('parser');
+		$this->parser->parse('index.tpl');
+	}
 	
 	public function test()
 	{

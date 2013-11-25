@@ -94,13 +94,20 @@ class Home extends CI_Controller
 	{
 	
 		$this->hero_session->is_active_session();
+		
+		
+		$userId = $this->session->userdata('userid');
+		
 		$data['mainContent'] = 'dashboard.tpl';
 		
+		$access	= $this->home_model->useraccess($userId);
+			
 		$data['data'] = array(
 			'baseUrl'	=> base_url(),
 			'title'   	=> 'Dashboard',
 			'firstname' => $this->session->userdata('fname'),
 			'lastname'  => $this->session->userdata('lname'),
+			'access'	=> $access->data->moduleaccess,
 			'msgClass'  => $this->msgClass,
 			'msgInfo'   => $this->msgInfo,
 		);

@@ -18,6 +18,12 @@ class home_model extends CI_Model {
 		return json_decode($this->call_rest_post($url,$data));
 	}
 	
+	function useraccess($userId='')
+	{
+		$url = $this->restApiUrl. 'users/useraccess/'.$this->apiAuthKey.'/' . $userId;
+		return json_decode($this->call_rest($url,''));
+	}
+	
 	// logout user
 	function logout()
 	{
