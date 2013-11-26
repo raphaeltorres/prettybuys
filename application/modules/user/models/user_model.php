@@ -30,6 +30,19 @@ class User_model extends CI_Model {
 		return json_decode($this->call_rest($url,''));
 	}
 	
+	function userAdd($data)
+	{
+		$url = $this->restApiUrl. 'users/'.$this->apiAuthKey.'/';
+		return json_decode($this->call_rest_post($url,$data));
+		
+	}
+	
+	function groupList()
+	{
+		$url = $this->restApiUrl. 'groups/'.$this->apiAuthKey.'/';
+		return json_decode($this->call_rest($url,''));
+	}
+	
 	// logout user
 	function logout()
 	{
@@ -37,7 +50,6 @@ class User_model extends CI_Model {
 		$logid  = $this->session->userdata('logid');
 		$locale = $this->session->userdata('locale');
 		$url = $this->restApiUrl. 'users/logout/'.$locale.'/'.$this->apiAuthKey.'/'  . $userid . '/' . $logid;
-		echo $url;
 		return json_decode($this->call_rest($url,''));
 	}	
 	

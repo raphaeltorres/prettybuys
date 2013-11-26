@@ -96,32 +96,32 @@ class Users extends CI_Controller {
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
 			$email			= $this->security->xss_clean($this->input->post('email'));	
-			$fname 			= $this->security->xss_clean($this->input->post('fname'));
-			$lname 			= $this->security->xss_clean($this->input->post('lname'));	
+			$username		= $this->security->xss_clean($this->input->post('username'));	
+			$firstname 		= $this->security->xss_clean($this->input->post('firstname'));
+			$lastname 		= $this->security->xss_clean($this->input->post('lastname'));	
 			$password		= $this->security->xss_clean($this->input->post('password'));
-			$user_level_id	= $this->security->xss_clean($this->input->post('user_level_id'));
-			$verified		= $this->security->xss_clean($this->input->post('verified'));
+			$group_id		= $this->security->xss_clean($this->input->post('groupid'));
 				
 			$response['success'] = true;
 			
 			//validation
-			foreach ( $this->input->post() as $key => $val ){
+			/*foreach ( $this->input->post() as $key => $val ){
 				if ( $val == '' || $val == NULL ){
 					$response['success'] = false;
 					$response['message'][] = $key.' must be provided';	
 				}
-			}	
+			}*/	
 			
 			if( $response['success'] ){
 				$this->load->model('users_model');
 				
 				$arr_data = array(
-					'email' 		=> $email,
-					'fname' 		=> $fname,
-					'lname' 		=> $lname,
-					'password' 		=> md5($password),
-					'user_level_id'	=> $user_level_id,
-					'verified' 		=> $verified
+					'user_email_address' 	=> $email,
+					'user_first_name' 		=> $firstname,
+					'user_last_name' 		=> $lastname,
+					'user_login_name' 		=> $username,
+					'user_login_password' 	=> md5($password),
+					'user_group_id'			=> $group_id,
 				);
 				
 				$response = $this->users_model->addUser($arr_data);	 
@@ -140,7 +140,7 @@ class Users extends CI_Controller {
 			'log_url' 		=> $this->uri->uri_string(),
 			'log_request' 	=> json_encode($this->input->post()),
 			'log_response' 	=> json_encode($response),
-			'log_query' 	=> $response['log_query'],
+			#'log_query' 	=> $response['log_query'],
 		);
 		$this->apilog_model->apiLog($log_data); //db logs
 		$this->api_functions->apiLog(json_encode($log_data),'POST_USERS'); //text logs

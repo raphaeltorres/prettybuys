@@ -8,7 +8,7 @@
 					<a href="index.html">Home</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">Dashboard</a></li>
+				<li><a href="#">Add User</a></li>
 			</ul>
 
 			<div class="row-fluid sortable ui-sortable">
@@ -22,7 +22,7 @@
 						</div>
 					</div>
 					<div class="box-content">
-						<form class="form-horizontal">
+							{$form_open}
 							<fieldset>
 
 							  <div class="control-group">
@@ -59,13 +59,18 @@
 								  <input class="input-xlarge focused" id="focusedInput" name="email" type="text" value="">
 								</div>
 							  </div>
+							  
+							<div class="control-group">
+                            	<label class="control-label" for="selectError1">Select Group</label>
+                                <div class="controls">{$groupList}</div>
+                            </div>
 							
 							  <div class="form-actions">
 								<button type="submit" class="btn btn-primary">Save changes</button>
 								<button class="btn">Cancel</button>
 							  </div>
 							</fieldset>
-						  </form>
+						  {$form_close}
 					
 					</div>
 				</div><!--/span-->

@@ -82,13 +82,13 @@ class Users_model extends CI_Model {
 
 	public function addUser($data) {
 		
-		//check if email already exist.
-		$this->db->where('user_email_address',$data['email']);
+		//check if user already exist.
+		$this->db->where('user_login_name',$data['user_login_name']);
 		$query = $this->db->get('account');
 		
 		if ($query->num_rows() > 0){
 			$response['rc']				= 999;
-			$response['message'][]		= 'Add user failed. Email already exist.';
+			$response['message'][]		= 'Add user failed. User already exist.';
 			$response['log_query']		= str_replace('\n',' ',$this->db->last_query());
 		}
 		else{
@@ -96,7 +96,7 @@ class Users_model extends CI_Model {
 			$data = $this->security->xss_clean($data);
 		
 			//insert data
-			$query = $this->db->insert('user', $data);
+			$query = $this->db->insert('account', $data);
 			if ( $this->db->affected_rows() > 0 ){
 				$response['rc']			= 0;
 				$response['message'][]	= 'User has been successfully added.';
@@ -105,7 +105,7 @@ class Users_model extends CI_Model {
 			else{
 				$response['rc']			= 999;
 				$response['message'][]	= 'Failed to add user.';
-				$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
+				$response['log_query']	= str_replace('\n',' ',$this->db->last_query());
 			}
 		}
 		return $response;
