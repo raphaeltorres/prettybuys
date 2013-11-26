@@ -335,7 +335,7 @@
 			<div id="sidebar-left" class="span2">
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
-						<li><a href="index.html"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>	
+						<li><a href="{$baseUrl}dashboard/members_area"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>	
 						
 						{foreach from=$access item=useraccess}
 						<li><a class="dropmenu" href="#"><i class="{$useraccess->module_icon}"></i><span class="hidden-tablet"> {$useraccess->module_name}</span></a>	

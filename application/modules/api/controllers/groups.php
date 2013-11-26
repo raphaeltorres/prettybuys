@@ -95,36 +95,21 @@ class Groups extends CI_Controller {
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$email			= $this->security->xss_clean($this->input->post('email'));	
-			$fname 			= $this->security->xss_clean($this->input->post('fname'));
-			$lname 			= $this->security->xss_clean($this->input->post('lname'));	
-			$password		= $this->security->xss_clean($this->input->post('password'));
-			$user_level_id	= $this->security->xss_clean($this->input->post('user_level_id'));
-			$verified		= $this->security->xss_clean($this->input->post('verified'));
-				
+			$groupname		= $this->security->xss_clean($this->input->post('groupname'));	
+			$groupdesc 		= $this->security->xss_clean($this->input->post('groupdesc'));
+			
 			$response['success'] = true;
 			
-			//validation
-			foreach ( $this->input->post() as $key => $val ){
-				if ( $val == '' || $val == NULL ){
-					$response['success'] = false;
-					$response['message'][] = $key.' must be provided';	
-				}
-			}	
-			
 			if( $response['success'] ){
-				$this->load->model('users_model');
+				$this->load->model('groups_model');
 				
 				$arr_data = array(
-					'email' 		=> $email,
-					'fname' 		=> $fname,
-					'lname' 		=> $lname,
-					'password' 		=> md5($password),
-					'user_level_id'	=> $user_level_id,
-					'verified' 		=> $verified
+					'group_name' 		=> $groupname,
+					'group_description' => $groupdesc,
+
 				);
 				
-				$response = $this->users_model->addUser($arr_data);	 
+				$response = $this->groups_model->addGroup($arr_data);	 
 			}
 			else{
 				$response['rc']			= $is_valid_auth['rc'];

@@ -84,7 +84,7 @@ class Groups_model extends CI_Model {
 		
 		//check if email already exist.
 		$this->db->where('group_name',$data['group_name']);
-		$query = $this->db->get('grouups');
+		$query = $this->db->get('groups');
 		
 		if ($query->num_rows() > 0){
 			$response['rc']				= 999;
@@ -96,16 +96,16 @@ class Groups_model extends CI_Model {
 			$data = $this->security->xss_clean($data);
 		
 			//insert data
-			$query = $this->db->insert('grouups', $data);
+			$query = $this->db->insert('groups', $data);
 			if ( $this->db->affected_rows() > 0 ){
 				$response['rc']			= 0;
 				$response['message'][]	= 'Group has been successfully added.';
-				$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
+				$response['log_query']	 = str_replace('\n',' ',$this->db->last_query());
 			}
 			else{
 				$response['rc']			= 999;
 				$response['message'][]	= 'Failed to add group.';
-				$response['log_query']			= str_replace('\n',' ',$this->db->last_query());
+				$response['log_query']	= str_replace('\n',' ',$this->db->last_query());
 			}
 		}
 		return $response;

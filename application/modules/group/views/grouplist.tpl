@@ -7,15 +7,16 @@
 					<a href="index.html">Home</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">User List</a></li>
+				<li><a href="#">Group List</a></li>
 			</ul>
 
+			<div class="row-fluid ">
+				<div class="span6"><button class="btn btn-small addgroup"><i class="icon-star"></i> Add Group</button>
+				</div>
+				</div>
 			<div class="row-fluid sortable">
 				<div class="box span12">
-                
-                
-                <hr>
-                
+
                     <div class="{$msgClass}"><strong>{$msgInfo}</strong></div>        
 					<div class="box-header" data-original-title>
 						<h2><i class="icon-user"></i><span class="break"></span>Groups</h2>
@@ -25,6 +26,8 @@
 							<a href="#" class="btn-close"><i class="icon-remove"></i></a>
 						</div>
 					</div>
+					
+					
 					<div class="box-content">
 					
 						<table class="table table-striped table-bordered bootstrap-datatable datatable">
@@ -57,19 +60,8 @@
                           
 					</div>
 				</div><!--/span-->
-				<button class="btn btn-small"><i class="icon-star"></i> Add Group</button>
 			</div><!--/row-->
 
-			
-			
-			
-						
-			
-			
-			
-			
-			
-			
 			<!--/row-->
 			
        

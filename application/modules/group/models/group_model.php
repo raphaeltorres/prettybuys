@@ -20,6 +20,12 @@ class Group_model extends CI_Model {
 		return json_decode($this->call_rest($url,''));
 	}
 	
+	function groupAdd($data)
+	{
+		$url = $this->restApiUrl. 'groups/'.$this->apiAuthKey.'/';
+		return json_decode($this->call_rest_post($url,$data));
+	}
+	
 	// logout user
 	function logout()
 	{
