@@ -112,8 +112,7 @@ class User extends CI_Controller
 		$access	  = $this->user_model->useraccess($userId);
 		$userList = $this->user_model->userList();
 		
-		$useraccess = ($access->rc == 0) ? $access->data->moduleaccess : array();
-			
+		$useraccess = ($access->rc == 0) ? $access->data->moduleaccess : array();			
 		$data['data'] = array(
 			'baseUrl'	=> base_url(),
 			'title'   	=> 'Userlist',
