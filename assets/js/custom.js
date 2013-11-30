@@ -46,6 +46,12 @@ jQuery(document).ready(function($){
 });	
 
 $(document).ready(function(){
+	
+	
+	$('.addgroup').click(function(){
+		var url = "groupadd";    
+		$(location).attr('href',url);
+	});
 		
 			
 	$("#username").focus(function() {
