@@ -38,6 +38,8 @@ class User extends CI_Controller
 
 			$access	= $this->user_model->useraccess($userId);
 
+			$useraccess = ($access->rc == 0) ? $access->data->moduleaccess : array();
+			
 			$data['mainContent'] = 'useradd.tpl';
 
 			$group_list = $this->user_model->groupList();
@@ -55,7 +57,7 @@ class User extends CI_Controller
 			'title'   	=> 'Add User',
 			'firstname' => $this->session->userdata('fname'),
 			'lastname'  => $this->session->userdata('lname'),
-			'access'	=> $access->data->moduleaccess,
+			'access'	=> $useraccess,
 			'msgClass'  => $this->msgClass,
 			'form_open' => $form_open,
 			'form_close' => $form_close,
@@ -109,13 +111,15 @@ class User extends CI_Controller
 		
 		$access	  = $this->user_model->useraccess($userId);
 		$userList = $this->user_model->userList();
+		
+		$useraccess = ($access->rc == 0) ? $access->data->moduleaccess : array();
 			
 		$data['data'] = array(
 			'baseUrl'	=> base_url(),
 			'title'   	=> 'Userlist',
 			'firstname' => $this->session->userdata('fname'),
 			'lastname'  => $this->session->userdata('lname'),
-			'access'	=> $access->data->moduleaccess,
+			'access'	=> $useraccess,
 			'userlist'  => $userList->data->userlist,
 			'msgClass'  => $this->msgClass,
 			'msgInfo'   => $this->msgInfo,
