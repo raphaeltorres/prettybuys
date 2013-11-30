@@ -63,7 +63,42 @@
 							<div class="control-group">
                             	<label class="control-label" for="selectError1">Select Group</label>
                                 <div class="controls">{$groupList}</div>
-                            </div>
+                            </div>   
+                                 
+							<div class="control-group hidden-phone">
+								<label class="control-label" for="textarea2">Textarea WYSIWYG</label>
+								<div class="controls">
+									<textarea class="cleditor" id="textarea2" rows="3"></textarea>
+							  	</div>
+							</div>
+							
+							  <div class="control-group">
+								<label class="control-label" for="selectError">Modern Select</label>
+								<div class="controls">
+								  <select id="selectError" data-rel="chosen">
+									<option>Option 1</option>
+									<option>Option 2</option>
+									<option>Option 3</option>
+									<option>Option 4</option>
+									<option>Option 5</option>
+								  </select>
+								</div>
+							  </div>
+							  
+							  <div class="control-group">
+								<label class="control-label">Checkboxes</label>
+								<div class="controls">
+								  <label class="checkbox inline">
+									<input type="checkbox" id="inlineCheckbox1" value="option1"> Option 1
+								  </label>
+								  <label class="checkbox inline">
+									<input type="checkbox" id="inlineCheckbox2" value="option2"> Option 2
+								  </label>
+								  <label class="checkbox inline">
+									<input type="checkbox" id="inlineCheckbox3" value="option3"> Option 3
+								  </label>
+								</div>
+							  </div>
 							
 							  <div class="form-actions">
 								<button type="submit" class="btn btn-primary">Save changes</button>
