@@ -12,20 +12,18 @@ class Product_model extends CI_Model {
 		$utctimestamp = $this->db->query("SELECT UTC_TIMESTAMP() as utctimestamp");
 		$this->utctimestamp = $utctimestamp->row()->utctimestamp;
 		
-		$locale		= ( strlen($this->uri->segment(3)) > 2 ) ? $this->uri->segment(4) : $this->uri->segment(3);
 		$dbPrefix	= $this->config->item('db_prefix');
 		
 		//load database based on locale
-		$this->db	= $this->load->database($dbPrefix.$locale,TRUE);
+		$this->db	= $this->load->database($dbPrefix,TRUE);
 	}
 
 	public function productList() {
-		$this->db->select('company_name,area_name,product_type,short_name,product_id,products.product_type_id,products.company_id,product_name,product_description,featured,products.country_id,products.area_id,product_icon,product_link,status,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo')
+		$this->db->select('product_name,product_type,product_id,products.product_type_id,product_price,product_description,featured,products.area_id,product_icon,product_link,status,savings,quantity,expiry_date,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo,user_first_name,user_last_name,area_name')
 			->from('products')
-			->join('companies','products.company_id = companies.company_id','inner')
 			->join('products_types','products_types.product_type_id = products.product_type_id','inner')
-			->join('countries','countries.country_id= products.country_id','inner')
-			->join('products_areas','products_areas.area_id = products.area_id','inner')
+			->join('products_areas','products_areas.area_id = products.area_id','left')
+			->join('account','account.user_id = products.merchant_id','left')
 			->order_by('product_id', 'asc');
 		$query = $this->db->get();
 	
@@ -46,19 +44,85 @@ class Product_model extends CI_Model {
 		return $response;
 	}
 
-	public function productInfo($id) {
+	public function productInfo($id='',$merchant='') {
 		
 		$product = array(
 					'product_id' 		=> $id
 		);
 		
 		
-		$this->db->select('company_name,area_name,product_type,short_name,product_id,products.product_type_id,products.company_id,product_name,product_description,featured,products.country_id,products.area_id,product_icon,product_link,status')
+		$this->db->select('product_name,product_type,product_id,products.product_type_id,product_price,product_description,featured,products.area_id,product_icon,product_link,status,savings,quantity,expiry_date,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo,user_first_name,user_last_name,area_name')
 			->from('products')
-			->join('companies','products.company_id = companies.company_id','inner')
 			->join('products_types','products_types.product_type_id = products.product_type_id','inner')
-			->join('countries','countries.country_id= products.country_id','inner')
 			->join('products_areas','products_areas.area_id = products.area_id','inner')
+			->join('account','account.user_id = products.merchant_id','left')
+			->where($product)
+			->order_by('product_id','asc');
+
+		$query = $this->db->get();
+		 
+		//if data exist, return results
+		if ($query->num_rows() > 0){
+			$response['rc']					 = 0;
+			$response['success']			 = true;
+			$response['data']['productinfo'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
+		}
+		else{ //no record found	 
+			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Product Info: No Records Found.';
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
+		}
+		return $response;
+	}
+
+	public function merchproductList($merchantId) {
+		
+		$product = array(
+					'merchant_id'		=> $merchantId
+		);
+		
+		$this->db->select('product_name,product_type,product_id,products.product_type_id,product_price,product_description,featured,products.area_id,product_icon,product_link,status,savings,quantity,expiry_date,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo,user_first_name,user_last_name,area_name')
+			->from('products')
+			->join('products_types','products_types.product_type_id = products.product_type_id','inner')
+			->join('products_areas','products_areas.area_id = products.area_id','left')
+			->join('account','account.user_id = products.merchant_id','left')
+			->where($product)
+			->order_by('product_id', 'asc');
+		$query = $this->db->get();
+	
+		//if data exist, return results
+		if ($query->num_rows() > 0){
+			$response['rc']					 = 0;
+			$response['success']			 = true;
+			$response['data']['productlist'] = $query->result();
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
+		}
+		else{ //no record found	 
+			$err_message = ( $this->db->_error_message() ) ? $this->db->_error_message() : 'Product List: No Records Found.';
+			$response['rc']			= 999;
+			$response['success']	= false;
+			$response['message'][]	= $err_message;
+			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
+		}
+		return $response;
+	}
+
+	public function merchproductInfo($id='',$merchantId='') {
+		
+		$product = array(
+					'product_id' 		=> $id,
+					'merchant_id'		=> $merchantId
+		);
+		
+		
+		$this->db->select('product_name,product_type,product_id,products.product_type_id,product_price,product_description,featured,products.area_id,product_icon,product_link,status,savings,quantity,expiry_date,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo,user_first_name,user_last_name,area_name')
+			->from('products')
+			->join('products_types','products_types.product_type_id = products.product_type_id','inner')
+			->join('products_areas','products_areas.area_id = products.area_id','inner')
+			->join('account','account.user_id = products.merchant_id','left')
 			->where($product)
 			->order_by('product_id','asc');
 
@@ -94,13 +158,13 @@ class Product_model extends CI_Model {
 			$response['success']	= true;
 			$response['message'][]	= 'Product has been successfully added.';
 			$response['productId']  = $this->db->insert_id();
-			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());	
 		}
 		else{
 			$response['rc']			= 999;
 			$response['success']	= false;
 			$response['message'][]	= 'Failed to add product.';
-			$response['log_query']			 = str_replace('\n',' ',$this->db->last_query());	
+			$response['log_query']	= str_replace('\n',' ',$this->db->last_query());	
 		}
 		return $response;
 	}

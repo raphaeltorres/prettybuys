@@ -58,15 +58,19 @@ class Home extends CI_Controller
 			$login = $this->home_model->validate($login_data);
 			
 			if ( $login->rc == 0 ){
+				
+				$merchant = (strtolower($login->data->user->group_name) == 'merchant') ? true : false;
+				
 				$data = array(
 					'userid' 		=> $login->data->user->user_id,
 					'email'	 		=> $login->data->user->user_email_address,
 					'fname'	 		=> $login->data->user->user_first_name,
 					'lname'			=> $login->data->user->user_last_name,
 					'groupId'		=> $login->data->user->user_group_id,
+					'merchant'		=> $merchant,
 					'is_logged_in'  => true
 				);
-
+				
 				$this->session->set_userdata($data);
 				redirect('dashboard/members_area');
 			}

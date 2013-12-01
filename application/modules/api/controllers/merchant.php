@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Products extends CI_Controller {
+class Merchant extends CI_Controller {
 
 	public function __construct() 
 	{
@@ -8,7 +8,8 @@ class Products extends CI_Controller {
 		$this->load->model('common_model');	
 		
 		$this->authKey	 		= ( $this->uri->segment(3) ) ? $this->uri->segment(3) : '';
-		$this->productId		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+		$this->merchantId		= ( $this->uri->segment(4) ) ? $this->uri->segment(4) : '';
+		$this->productId		= ( $this->uri->segment(5) ) ? $this->uri->segment(5) : '';
 	}
 
 	public function rest()
@@ -39,13 +40,13 @@ class Products extends CI_Controller {
 		if ( $is_valid_auth['rc'] == 0 ){
 			$this->load->model('product_model');
 			
-			if ( $this->productId != ''){
+			if ($this->merchantId != '' && $this->productId != ''){
 				//get company info
-				$response = $this->product_model->productInfo($this->productId);
+				$response = $this->product_model->merchproductInfo($this->productId,$this->merchantId);
 			}
 			else{
 				//get company list
-				$response = $this->product_model->productList();
+				$response = $this->product_model->merchproductList($this->merchantId);
 			}
 		}
 		else{
@@ -87,20 +88,16 @@ class Products extends CI_Controller {
 		
 		//auth key is valid
 		if ( $is_valid_auth['rc'] == 0 ){
-			$merchant_id			= $this->security->xss_clean($this->input->post('merchant_id'));
 			$product_name			= $this->security->xss_clean($this->input->post('product_name'));
 			$product_description	= $this->security->xss_clean($this->input->post('product_description'));
 			$product_type_id		= $this->security->xss_clean($this->input->post('product_type_id'));
 			$featured				= $this->security->xss_clean($this->input->post('featured'));
+			$country_id				= $this->security->xss_clean($this->input->post('country_id'));
+			$company_id				= $this->security->xss_clean($this->input->post('company_id'));
 			$area_id				= $this->security->xss_clean($this->input->post('area_id'));
 			$product_icon			= $this->security->xss_clean($this->input->post('product_icon'));
 			$product_link			= $this->security->xss_clean($this->input->post('product_link'));
-			$product_price			= $this->security->xss_clean($this->input->post('product_price'));
 			$status					= $this->security->xss_clean($this->input->post('status'));
-			$quantity 				= $this->security->xss_clean($this->input->post('quantity'));
-			$savings   				= $this->security->xss_clean($this->input->post('savings'));
-			$featured  				= $this->security->xss_clean($this->input->post('featured'));
-			$expiry_date			= $this->security->xss_clean($this->input->post('expiry_date'));
 			$insert_sql				= $this->security->xss_clean($this->input->post('insert_sql'));
 			
 			$response['success'] = true;
@@ -121,19 +118,16 @@ class Products extends CI_Controller {
 				$this->load->model('product_model');
 				
 				$arr_data = array(
-					'merchant_id'			=> $merchant_id,
-					'area_id'				=> $area_id,
 					'product_name'			=> $product_name,
 					'product_description' 	=> $product_description,
 					'product_type_id' 		=> $product_type_id,
-					'product_price' 		=> $product_price,
+					'featured' 				=> $featured,
+					'company_id'			=> $company_id,
+					'country_id' 			=> $country_id,
+					'area_id'				=> $area_id,
 					'product_icon' 			=> $product_icon,
 					'product_link' 			=> $product_link,
-					'featured' 				=> $featured,
-					'status'				=> $status,
-					'quantity'				=> $quantity,
-					'savings'				=> $savings,
-					'expiry_date'			=> $expiry_date,
+					'status'				=> $status
 				);
 				
 				if($insert_sql != '' || $insert_sql != NULL)

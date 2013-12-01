@@ -117,8 +117,13 @@ class Users_model extends CI_Model {
 			'user_login_password' 	=> $password
 		);
 		
-		$this->db->where($arr_data);
-		$query = $this->db->get('account');
+		$this->db->select('group_name,user_id,user_group_id,user_first_name,user_last_name,user_email_address')
+			->from('account')
+			->join('groups','groups.group_id = account.user_group_id','inner')
+			->where($arr_data)
+			->order_by('user_id', 'asc');
+		
+		$query = $this->db->get();
 		 
 		//user data exist
 		if ($query->num_rows() > 0){

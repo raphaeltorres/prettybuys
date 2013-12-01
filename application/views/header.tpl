@@ -351,8 +351,9 @@
 					<li>
 					<a class="dropmenu" href="#"><i class="icon-shopping-cart"></i><span class="hidden-tablet"> Merchant</span></a>	
 							<ul>	
+								<li><a class="submenu" href="{$baseUrl}merchant/deals"><i class="icon-barcode"></i><span class="hidden-tablet"> Deals</span></a></li>
+								<li><a class="submenu" href="{$baseUrl}merchant/orders"><i class="icon-gift"></i><span class="hidden-tablet"> Orders</span></a></li>	
 								<li><a class="submenu" href="{$baseUrl}merchant/vouchers"><i class="icon-tag"></i><span class="hidden-tablet"> Vouchers</span></a></li>
-								<li><a class="submenu" href="{$baseUrl}merchant/deals"><i class="icon-barcode"></i><span class="hidden-tablet"> Deals</span></a></li>	
 							</ul>
 					</li>
 						
