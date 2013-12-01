@@ -19,7 +19,7 @@ class Product_model extends CI_Model {
 	}
 
 	public function productList() {
-		$this->db->select('product_name,product_type,product_id,products.product_type_id,product_price,product_description,featured,products.area_id,product_icon,product_link,status,savings,quantity,expiry_date,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo,user_first_name,user_last_name,area_name')
+		$this->db->select('product_name,product_type,product_id,products.product_type_id,product_price,product_description,featured,products.area_id,product_icon,product_link,status,savings,quantity,expiry_date,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo,user_first_name,user_last_name,area_name,url_slug')
 			->from('products')
 			->join('products_types','products_types.product_type_id = products.product_type_id','inner')
 			->join('products_areas','products_areas.area_id = products.area_id','left')
@@ -51,7 +51,7 @@ class Product_model extends CI_Model {
 		);
 		
 		
-		$this->db->select('product_name,product_type,product_id,products.product_type_id,product_price,product_description,featured,products.area_id,product_icon,product_link,status,savings,quantity,expiry_date,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo,user_first_name,user_last_name,area_name')
+		$this->db->select('product_name,product_type,product_id,products.product_type_id,product_price,product_description,featured,products.area_id,product_icon,product_link,status,savings,quantity,expiry_date,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo,user_first_name,user_last_name,area_name,url_slug')
 			->from('products')
 			->join('products_types','products_types.product_type_id = products.product_type_id','inner')
 			->join('products_areas','products_areas.area_id = products.area_id','inner')
@@ -84,7 +84,7 @@ class Product_model extends CI_Model {
 					'merchant_id'		=> $merchantId
 		);
 		
-		$this->db->select('product_name,product_type,product_id,products.product_type_id,product_price,product_description,featured,products.area_id,product_icon,product_link,status,savings,quantity,expiry_date,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo,user_first_name,user_last_name,area_name')
+		$this->db->select('product_name,product_type,product_id,products.product_type_id,product_price,product_description,featured,products.area_id,product_icon,product_link,status,savings,quantity,expiry_date,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo,user_first_name,user_last_name,area_name,url_slug')
 			->from('products')
 			->join('products_types','products_types.product_type_id = products.product_type_id','inner')
 			->join('products_areas','products_areas.area_id = products.area_id','left')
@@ -118,7 +118,7 @@ class Product_model extends CI_Model {
 		);
 		
 		
-		$this->db->select('product_name,product_type,product_id,products.product_type_id,product_price,product_description,featured,products.area_id,product_icon,product_link,status,savings,quantity,expiry_date,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo,user_first_name,user_last_name,area_name')
+		$this->db->select('product_name,product_type,product_id,products.product_type_id,product_price,product_description,featured,products.area_id,product_icon,product_link,status,savings,quantity,expiry_date,(SELECT COUNT(*) FROM products_options po WHERE po.option="Promo" AND po.product_id=products.product_id) as promo,user_first_name,user_last_name,area_name,url_slug')
 			->from('products')
 			->join('products_types','products_types.product_type_id = products.product_type_id','inner')
 			->join('products_areas','products_areas.area_id = products.area_id','inner')
