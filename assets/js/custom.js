@@ -52,6 +52,11 @@ $(document).ready(function(){
 		var url = "groupadd";    
 		$(location).attr('href',url);
 	});
+	
+	$('.productadd').click(function(){
+		var url = "productadd";    
+		$(location).attr('href',url);
+	});
 		
 			
 	$("#username").focus(function() {
